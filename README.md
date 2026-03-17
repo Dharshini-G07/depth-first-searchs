@@ -54,6 +54,33 @@ Now, the Stack becomes empty, which means we have visited all the nodes, and our
  <li>If Not Visited, add it to the STACK. Else Call The Function Again Until No more nodes needs to be visited.</li>
 </ol></B>
 
+
+<h3>Program:</h3>
+
+```
+from collections import defaultdict
+def dfs(graph,start,visited,path):
+    path.append(start)
+    visited[start]=True
+    for neighbour in graph[start]:
+        if visited[neighbour]==False:
+            dfs(graph,neighbour,visited,path)
+            visited[neighbour]=True
+    return path
+graph=defaultdict(list)
+nodes,edges=map(int,input().split())
+for _ in range(edges):
+    u,v=map(str,input().split())
+    
+    graph[u].append(v)
+    graph[v].append(u)
+start=input()
+visited=defaultdict(bool)
+path=[]
+traversedpath=dfs(graph,start,visited,path)
+print(traversedpath)
+
+```
 <hr>
 <h3>Sample Input</h3>
 <hr>
@@ -72,38 +99,14 @@ F H <BR>
 <hr>
 ['A', 'B', 'E', 'D', 'C', 'G', 'F', 'H']
 
+
+
 <hr>
-
-<h3>Program:</h3>
-
-```
-
-from collections import defaultdict
-def dfs(graph,start,visited,path):
-    path.append(start)
-    visited[start]=True
-    for neighbour in graph[start]:
-       if visited[neighbour]==False:
-            dfs(graph,neighbour,visited,path)
-            visited[neighbour]=True
-    return path
-graph=defaultdict(list)
-n,e=map(int,input().split())
-for i in range(e):
-    u,v=map(str,input().split(' '))
-    graph[u].append(v)
-    graph[v].append(u)
-start='A'
-visited=defaultdict(bool)
-path=[]
-traversedpath=dfs(graph,start,visited,path)
-print(traversedpath)
+<h3>Output</h3>
+<hr>
+<img width="534" height="367" alt="image" src="https://github.com/user-attachments/assets/07367ac3-4d2a-48a1-b434-f2d084a7e8f3" />
 
 
-```
-
-## Output:
-![image](https://github.com/user-attachments/assets/93632974-e040-43f7-ac24-1982af031b59)
 
 
 <hr>
@@ -121,34 +124,12 @@ print(traversedpath)
 ['0', '1', '2', '3', '4']
 
 <hr>
+<h3>Output</h3>
+<hr>
+<img width="440" height="290" alt="image" src="https://github.com/user-attachments/assets/34fa84d6-0b98-499f-ac16-8c4b9d5be615" />
 
-## Program:
-```
-#import defaultdict
-from collections import defaultdict
-def dfs(graph,start,visited,path):
-    path.append(start)
-    visited[start]=True
-    for neighbour in graph[start]:
-        if visited[neighbour]==False:
-            dfs(graph,neighbour,visited,path)
-            visited[neighbour]=True
-    return path
-graph=defaultdict(list)
-n,e=map(int,input().split())
-for i in range(e):
-    u,v=map(str,input().split())
-    graph[u].append(v)
-    graph[v].append(u)
-#print(graph)
-start='0'
-visited=defaultdict(bool)
-path=[]
-traversedpath=dfs(graph,start,visited,path)
-print(traversedpath)
-```
-## Output:
-![image](https://github.com/user-attachments/assets/03ebaaa0-3ac4-47da-b505-1debde925d4d)
+
+
 
 <h3>Result:</h3>
 <hr>
